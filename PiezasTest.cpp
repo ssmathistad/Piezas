@@ -14,7 +14,7 @@ class PiezasTest : public ::testing::Test
 		virtual void TearDown(){} //clean up after each test, (before destructor) 
 };
 
-// Tests for the intial grid state filled out by the constuctor.
+//--- Tests for the intial grid state filled out by the constuctor.
 
 TEST(PiezasTest, initial_state_row_0_col_0)
 {
@@ -58,10 +58,10 @@ TEST(PiezasTest, initial_state_row_2_col_3)
 	ASSERT_EQ(piece_at, Blank);
 }
 
-// Tests for the intial grid state filled out by the constuctor,
+//--- Tests for the intial grid state filled out by the constuctor,
 // followed by calling the reset() function.
 
-TEST(PiezasTest, reset_state_row_0_col_0)
+TEST(PiezasTest, reset_get_piece_at_row_0_col_0_no_dropPiece)
 {
 	Piezas obj;
 	obj.reset();
@@ -69,7 +69,7 @@ TEST(PiezasTest, reset_state_row_0_col_0)
 	ASSERT_EQ(piece_at, Blank);
 }
 
-TEST(PiezasTest, reset_state_row_0_col_3)
+TEST(PiezasTest, reset_get_piece_at_row_0_col_3_no_dropPiece)
 {
 	Piezas obj;
 	obj.reset();
@@ -77,7 +77,7 @@ TEST(PiezasTest, reset_state_row_0_col_3)
 	ASSERT_EQ(piece_at, Blank);
 }
 
-TEST(PiezasTest, reset_state_row_1_col_0)
+TEST(PiezasTest, reset_get_piece_at_row_1_col_0_no_dropPiece)
 {
 	Piezas obj;
 	obj.reset();
@@ -85,7 +85,7 @@ TEST(PiezasTest, reset_state_row_1_col_0)
 	ASSERT_EQ(piece_at, Blank);
 }
 
-TEST(PiezasTest, reset_state_row_1_col_3)
+TEST(PiezasTest, reset_get_piece_at_row_1_col_3_no_dropPiece)
 {
 	Piezas obj;
 	obj.reset();
@@ -93,7 +93,7 @@ TEST(PiezasTest, reset_state_row_1_col_3)
 	ASSERT_EQ(piece_at, Blank);
 }
 
-TEST(PiezasTest, reset_state_row_2_col_0)
+TEST(PiezasTest, reset_get_piece_at_row_2_col_0_no_dropPiece)
 {
 	Piezas obj;
 	obj.reset();
@@ -101,10 +101,22 @@ TEST(PiezasTest, reset_state_row_2_col_0)
 	ASSERT_EQ(piece_at, Blank);
 }
 
-TEST(PiezasTest, reset_state_row_2_col_3)
+TEST(PiezasTest, reset_get_piece_at_row_2_col_3_no_dropPiece)
 {
 	Piezas obj;
 	obj.reset();
 	Piece piece_at = obj.pieceAt(2, 3);
 	ASSERT_EQ(piece_at, Blank);
+}
+
+//--- Tests dropPiece()
+
+//// Invalid col
+TEST(PiezasTest, dropPiece_below_min_BOARD_COLS)
+{
+	// 0-2 then 1-2 is col 2
+	Piezas obj;
+	obj.dropPiece(-1)
+	Piece piece_at = obj.pieceAt(-1, 0);
+	ASSERT_EQ(piece_at, Invalid);
 }
