@@ -25,12 +25,6 @@ Piezas::Piezas()
     Piece piece = Blank;
     std::vector<Piece> v{piece,piece,piece,piece};
     board.push_back(v);
-    
-    //board.push_back(v);
-    //board.push_back(v);
-    
-    //std::cout << piece << std::endl;
-    //std::cout << (char)board[0][0] << std::endl;
 
     for (int i = BOARD_ROWS-1; i >= 0; i--) {
         board.push_back(v);
@@ -73,12 +67,14 @@ Piece Piezas::pieceAt(int row, int column)
 {
     if (row > BOARD_ROWS-1 || column > BOARD_COLS-1 || row < 0 || column < 0) {
         return Invalid;
-    } else if (board[row][column] == Blank) {
+    } else if ((char)board[row][column] == Blank) {
         return Blank;
-    } else if (board[row][column] == X) {
+    } else if ((char)board[row][column] == X) {
         return X;
-    } else if (board[row][column] == O) {
+    } else if ((char)board[row][column] == O) {
         return O;
+    } else {
+        return Invalid;
     }
 }
 
