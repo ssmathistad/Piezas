@@ -17,6 +17,6 @@ class PiezasTest : public ::testing::Test
 TEST(PiezasTest, initial_0_row_0_col)
 {
 	Piezas obj;
-	//Piece piece_at = obj.pieceAt(0, 0);
-	ASSERT_EQ(1, 1);
+	Piece piece_at = obj.pieceAt(0, 0);
+	ASSERT_EQ(piece_at, Blank);
 }
