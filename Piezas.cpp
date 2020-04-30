@@ -22,10 +22,18 @@
 **/
 Piezas::Piezas()
 {
+    Piece piece = Blank;
+    std::vector<Piece> v{piece,piece,piece,piece};
+    board.push_back(v);
+    
+    //board.push_back(v);
+    //board.push_back(v);
+    
+    //std::cout << piece << std::endl;
+    //std::cout << (char)board[0][0] << std::endl;
+
     for (int i = BOARD_ROWS-1; i >= 0; i--) {
-        for (int j = 0; j < BOARD_COLS; j++) {
-            board[i][j] = Blank;
-        }
+        board.push_back(v);
     }
 
     turn = X;
