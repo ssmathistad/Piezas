@@ -123,9 +123,41 @@ TEST(PiezasTest, dropPiece_below_min_BOARD_COLS)
 
 TEST(PiezasTest, dropPiece_above_max_BOARD_COLS)
 {
-	// 0-2 then 1-2 is col 2
 	Piezas obj;
 	obj.dropPiece(3);
 	Piece piece_at = obj.pieceAt(0, 4);
 	ASSERT_EQ(piece_at, Invalid);
+}
+
+//// Valid col
+TEST(PiezasTest, dropPiece_col_0_within_BOARD_COLS)
+{
+	Piezas obj;
+	obj.dropPiece(0);
+	Piece piece_at = obj.pieceAt(0, 0);
+	ASSERT_EQ(piece_at, X);
+}
+
+TEST(PiezasTest, dropPiece_col_1_within_BOARD_COLS)
+{
+	Piezas obj;
+	obj.dropPiece(1);
+	Piece piece_at = obj.pieceAt(0, 1);
+	ASSERT_EQ(piece_at, X);
+}
+
+TEST(PiezasTest, dropPiece_col_2_within_BOARD_COLS)
+{
+	Piezas obj;
+	obj.dropPiece(2);
+	Piece piece_at = obj.pieceAt(0, 2);
+	ASSERT_EQ(piece_at, X);
+}
+
+TEST(PiezasTest, dropPiece_col_3_within_BOARD_COLS)
+{
+	Piezas obj;
+	obj.dropPiece(3);
+	Piece piece_at = obj.pieceAt(0, 3);
+	ASSERT_EQ(piece_at, X);
 }

@@ -89,7 +89,7 @@ Piece Piezas::pieceAt(int row, int column)
 {
     row = std::abs(row-2);
 
-    if (row > BOARD_ROWS-1 || column > BOARD_COLS-1 || row < 0 || column < 0) {
+    if (row >= BOARD_ROWS || column >= BOARD_COLS || row < 0 || column < 0) {
         return Invalid;
     }
     
