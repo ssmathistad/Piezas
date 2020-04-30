@@ -62,7 +62,7 @@ Piece Piezas::dropPiece(int column)
         return Invalid;
     }
 
-    for (int i = BOARD_COLS-1; i < BOARD_COLS; i--) {
+    for (int i = BOARD_COLS-1; i >= 0; i--) {
         if (board[i][column] == Blank && i < BOARD_COLS-1) {
             if (turn == X) {
                 board[i][column] = X;
