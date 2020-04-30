@@ -63,7 +63,15 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
-    return Blank;
+    if (row > 2 || column > 3 || row < 0 || column < 0) {
+        return Invalid;
+    } else if (board[row][column] = Blank) {
+        return Blank;
+    } else if (board[row][column] = X) {
+        return X;
+    } else if (board[row][column] = O) {
+        return O;
+    }
 }
 
 /**
