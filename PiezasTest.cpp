@@ -14,7 +14,9 @@ class PiezasTest : public ::testing::Test
 		virtual void TearDown(){} //clean up after each test, (before destructor) 
 };
 
-TEST(PiezasTest, sanityCheck)
+TEST(PiezasTest, initial_0_row_0_col)
 {
-	ASSERT_TRUE(true);
+	Piezas obj;
+	Piece piece_at = obj.pieceAt(0, 0);
+	ASSERT_EQ(piece_at, Blank);
 }
