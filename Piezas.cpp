@@ -67,11 +67,11 @@ Piece Piezas::pieceAt(int row, int column)
 {
     if (row > BOARD_ROWS-1 || column > BOARD_COLS-1 || row < 0 || column < 0) {
         return Invalid;
-    } else if ((char)board[row][column] == Blank) {
+    } else if (board[row][column] == Blank) {
         return Blank;
-    } else if ((char)board[row][column] == X) {
+    } else if (board[row][column] == X) {
         return X;
-    } else if ((char)board[row][column] == O) {
+    } else if (board[row][column] == O) {
         return O;
     } else {
         return Invalid;
