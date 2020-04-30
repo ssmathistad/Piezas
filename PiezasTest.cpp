@@ -14,6 +14,8 @@ class PiezasTest : public ::testing::Test
 		virtual void TearDown(){} //clean up after each test, (before destructor) 
 };
 
+// Tests for the intial grid state filled out by the constuctor.
+
 TEST(PiezasTest, initial_state_row_0_col_0)
 {
 	Piezas obj;
@@ -56,7 +58,8 @@ TEST(PiezasTest, initial_state_row_2_col_3)
 	ASSERT_EQ(piece_at, Blank);
 }
 
-///
+// Tests for the intial grid state filled out by the constuctor,
+// followed by calling the reset() function.
 
 TEST(PiezasTest, reset_state_row_0_col_0)
 {
