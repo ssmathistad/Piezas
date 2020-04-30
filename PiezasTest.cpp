@@ -126,6 +126,6 @@ TEST(PiezasTest, dropPiece_above_max_BOARD_COLS)
 	// 0-2 then 1-2 is col 2
 	Piezas obj;
 	obj.dropPiece(3);
-	Piece piece_at = obj.pieceAt(0, 3);
+	Piece piece_at = obj.pieceAt(0, 4);
 	ASSERT_EQ(piece_at, Invalid);
 }
