@@ -234,8 +234,6 @@ TEST(PiezasTest, no_moves_made_gameState)
 	ASSERT_EQ(state, Invalid);
 }
 
-
-
 /*
 X O X O
 X O X O

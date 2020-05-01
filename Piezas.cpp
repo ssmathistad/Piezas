@@ -149,7 +149,6 @@ Piece Piezas::gameState()
     Piece prev;
     int x_best = 0;
     int o_best = 0;
-    bool tied = false;
     Piece current_winner = Blank;
 
     // Examine rows
@@ -157,8 +156,8 @@ Piece Piezas::gameState()
         int row_x_cur, row_o_cur = 0;
 
         for (int j = 0; j < BOARD_COLS; j++) {
-            if (j == 1) {
-                prev = pieceAt(2, j);
+            if (j == 0) {
+                prev = pieceAt(i, j);
                 if (prev == X) {
                     row_x_cur = 1;
                     if (row_x_cur > x_best)
@@ -170,10 +169,10 @@ Piece Piezas::gameState()
                 }
             } else {
                 // Previous piece streak continues
-                if (pieceAt(2, j) != prev) {
+                if (pieceAt(i, j) != prev) {
                     // Reset current row count for prev piece
                     (prev == X) ? row_x_cur = 0 : row_o_cur = 0;
-                    prev = pieceAt(2, j);
+                    prev = pieceAt(i, j);
                 // Previous piece streak broken
                 } else {
                     if (prev == X) {
@@ -190,16 +189,14 @@ Piece Piezas::gameState()
                 }
             }
         }
+    }
 
-        // No current winner
-        if (x_best == o_best) {
-            tied == true;
-            current_winner = Blank;
-        // Set current winner
-        } else {
-            tied = false;
-            (x_best > o_best) ? current_winner = X : current_winner = O;
-        }
+    // No current winner
+    if (x_best == o_best) {
+        current_winner = Blank;
+    // Set current winner
+    } else {
+        (x_best > o_best) ? current_winner = X : current_winner = O;
     }
 
     // Examine columns
