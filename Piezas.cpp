@@ -1,6 +1,7 @@
 #include "Piezas.h"
 #include <vector>
 #include <cmath>
+#include <string>
 /** CLASS Piezas
  * Class for representing a Piezas vertical board, which is roughly based
  * on the game "Connect Four" where pieces are placed in a column and 
@@ -25,7 +26,6 @@ Piezas::Piezas()
 {
     Piece piece = Blank;
     std::vector<Piece> v{piece,piece,piece,piece};
-    board.push_back(v);
 
     for (int i = BOARD_ROWS-1; i >= 0; i--) {
         board.push_back(v);
@@ -54,7 +54,13 @@ void Piezas::reset()
  * In that case, placePiece returns Piece Blank value 
  * Out of bounds coordinates return the Piece Invalid value
  * Trying to drop a piece where it cannot be placed loses the player's turn
-**/ 
+**/
+
+/*    Row, col
+    * [2,0][2,1][2,2][2,3]
+    * [1,0][1,1][1,2][1,3]
+    * [0,0][0,1][0,2][0,3]
+*/
 Piece Piezas::dropPiece(int column)
 {
     // 0-2 then 1-2 is col 2
@@ -85,11 +91,18 @@ Piece Piezas::dropPiece(int column)
  * Returns what piece is at the provided coordinates, or Blank if there
  * are no pieces there, or Invalid if the coordinates are out of bounds
 **/
+
+/*    Row, col
+    * [2,0][2,1][2,2][2,3]
+    * [1,0][1,1][1,2][1,3]
+    * [0,0][0,1][0,2][0,3]
+*/
 Piece Piezas::pieceAt(int row, int column)
 {
+    // 0,2
     row = std::abs(row-2);
 
-    if (row >= BOARD_ROWS || column >= BOARD_COLS || row < 0 || column < 0) {
+    if (row >= BOARD_ROWS || column >= BOARD_COLS) {
         return Invalid;
     }
     
@@ -115,6 +128,98 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
-    bool gameOver = false;
+    //bool gameOver = false;
+    int counter = 0;
+
+    for (int i = BOARD_ROWS-1; i >= 0; i--) {
+        for (int j = 0; j < BOARD_COLS; j++) {
+            if (pieceAt(i, j) == Blank) {
+                counter++;
+            }
+        }
+    }
+
+    if (counter > 0) {
+        return Invalid;
+    }
+
+    int x_best = 0;
+    int o_best = 0;
+    bool tied = false;
+    Piece prev;
+
+    for (int i = BOARD_ROWS-1; i >= 0; i--) {
+        int cur_x, cur_o = 0;
+
+        for (int j = 0; j < BOARD_COLS; j++) {
+            if (j == 0) {
+                prev = pieceAt(i, j);
+
+                if (prev == X) {
+                    cur_x = 1;
+
+                    if (cur_x > x_best) {
+                        x_best = cur_x;
+                    }
+                } else {
+                    cur_o = 1;
+
+                    if (cur_o > o_best) {
+                        o_best = cur_o;
+                    }
+                }
+            } else {
+                    if (pieceAt(i, j) != prev) {
+                        prev = pieceAt(i, j);
+                    } else {
+                    if (prev == X) {
+                        cur_x++;
+
+                        if (cur_x > x_best) {
+                            x_best = cur_x;
+                        }
+                    } else {
+                        cur_o++;
+
+                        if (cur_o > o_best) {
+                            o_best = cur_o;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (x_best == o_best) {
+            tied = true;
+        } else {
+            tied = false;
+        }
+    }
+
+    for (int i = 3; i >= 0; i--) {
+        for (int j = 0; j < 4; j++) {
+            if (j == 1) {
+                
+            } else {
+
+            }
+        }
+    }
+
+    /* Row, col
+    * [2,0][2,1][2,2][2,3]
+    * [1,0][1,1][1,2][1,3]
+    * [0,0][0,1][0,2][0,3]
+
+    Row 2: [2,0][2,1][2,2][2,3]
+    Row 1: [1,0][1,1][1,2][1,3]
+    Row 0: [0,0][0,1][0,2][0,3]
+
+    Col 0: [2,0][1,0][0,0]
+    Col 1: [2,1][1,1][0,1]
+    Col 2: [2,2][1,2][0,2]
+    Col 3: [2,3][1,3][0,3]
+    */
+
     return Blank;
 }
