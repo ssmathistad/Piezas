@@ -193,6 +193,5 @@ TEST(PiezasTest, board_full_playing_sequentially_by_col)
 	obj.dropPiece(2);
 	obj.dropPiece(3);
 
-	Piece state = obj.gameState();
-	ASSERT_EQ(state, Blank);
+	ASSERT_EQ(obj.gameState(), Blank);
 }
