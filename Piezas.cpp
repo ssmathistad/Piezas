@@ -65,6 +65,7 @@ Piece Piezas::dropPiece(int column)
 {
     // 0-2 then 1-2 is col 2
     if (column >= BOARD_COLS || column < 0) {
+        (turn == X) ? turn = O : turn = X;
         return Invalid;
     }
 
