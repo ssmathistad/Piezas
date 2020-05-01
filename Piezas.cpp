@@ -70,7 +70,7 @@ Piece Piezas::dropPiece(int column)
     }
 
     for (int i = BOARD_ROWS-1; i >= 0; i--) {
-        if (board[i][column] == Blank && i <= BOARD_COLS-1) {
+        if (board[i][column] == Blank && i <= BOARD_ROWS-1) {
             if (turn == X) {
                 board[i][column] = X;
                 turn = O;
@@ -80,7 +80,7 @@ Piece Piezas::dropPiece(int column)
             }
 
             return board[i][column];
-        } else if (board[i][column] != Blank && i == BOARD_COLS-1) {
+        } else if (board[i][column] != Blank && i == BOARD_ROWS-1) {
             (turn == X) ? turn = O : turn = X;
             return Blank;
         }
