@@ -169,3 +169,30 @@ TEST(PiezasTest, no_moves_made_gameState)
 	Piece state = obj.gameState();
 	ASSERT_EQ(state, Invalid);
 }
+
+/*
+X O X O
+X O X O
+X O X O
+*/
+TEST(PiezasTest, board_full_playing_sequentially_by_col)
+{
+	Piezas obj;
+	obj.dropPiece(0);
+	obj.dropPiece(1);
+	obj.dropPiece(2);
+	obj.dropPiece(3);
+	
+	obj.dropPiece(0);
+	obj.dropPiece(1);
+	obj.dropPiece(2);
+	obj.dropPiece(3);
+
+	obj.dropPiece(0);
+	obj.dropPiece(1);
+	obj.dropPiece(2);
+	obj.dropPiece(3);
+
+	Piece state = obj.gameState();
+	ASSERT_EQ(state, Blank);
+}
