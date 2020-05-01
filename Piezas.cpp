@@ -180,16 +180,16 @@ Piece Piezas::gameState()
                     }
                 }
             }
+        }
 
-            // No current winner
-            if (x_best == o_best) {
-                tied == true;
-                current_winner = Blank;
-            // Set current winner
-            } else {
-                tied = false;
-                (x_best > o_best) ? current_winner = X : current_winner = O;
-            }
+        // No current winner
+        if (x_best == o_best) {
+            tied == true;
+            current_winner = Blank;
+        // Set current winner
+        } else {
+            tied = false;
+            (x_best > o_best) ? current_winner = X : current_winner = O;
         }
     }
 
