@@ -82,11 +82,41 @@ Piece Piezas::dropPiece(int column)
                     board[i][column] = O;
                     turn = X;
                 }
+                return board[i][column];
             }
-            return board[i][column];
         }
     }
 }
+
+/*
+Piece Piezas::dropPiece(int column)
+{
+    // 0-2 then 1-2 is col 2
+    if (column >= BOARD_COLS || column < 0) {
+        (turn == X) ? turn = O : turn = X;
+        return Invalid;
+    }
+
+    for (int i = BOARD_ROWS-1; i >= 0; i--) {
+        if (board[i][column] == Blank && i <= BOARD_COLS-1) {
+            if (turn == X) {
+                board[i][column] = X;
+                turn = O;
+            } else {
+                board[i][column] = O;
+                turn = X;
+            }
+
+            return board[i][column];
+        } else if (board[i][column] != Blank && i == BOARD_COLS-1) {
+            (turn == X) ? turn = O : turn = X;
+            return Blank;
+        }
+    }
+
+    return Invalid;
+}
+*/
 
 /**
  * Returns what piece is at the provided coordinates, or Blank if there
