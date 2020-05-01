@@ -90,14 +90,12 @@ Piece Piezas::pieceAt(int row, int column)
 
     row = std::abs(row-2);
     
-    if (board[row][column] == Blank) {
-        return Blank;
-    } else if (board[row][column] == X) {
+    if (board[row][column] == X) {
         return X;
     } else if (board[row][column] == O) {
         return O;
     } else {
-        return Invalid;
+        return Blank;
     }
 }
 
