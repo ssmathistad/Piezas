@@ -142,43 +142,46 @@ Piece Piezas::gameState()
         return Invalid;
     }
 
-    // Test rows
+    //Determine winner
 
     Piece prev;
     int x_best = 0;
     int o_best = 0;
     bool tied = false;
 
-    //for loop start - rows
-    
-    int row_x_cur, row_o_cur = 0;
+    // Test rows
+    // for (int i = BOARD_ROWS-1; i >= 0; i--) {
+        int row_x_cur, row_o_cur = 0;
 
-    for (int j = 0; j < BOARD_COLS; j++) {
-        if (j == 1) {
-            prev = pieceAt(2, j);
-            // Cannot assume x_best/o_best for next test with columns
-            (prev == X) ? (row_x_cur, x_best = 1) : (row_o_cur, o_best = 1);
-        } else {
-            if (pieceAt(2, j) != prev) {
-                // Reset current row count for prev piece
-                (prev == X) ? row_x_cur = 0 : row_o_cur = 0;
+        for (int j = 0; j < BOARD_COLS; j++) {
+            if (j == 1) {
                 prev = pieceAt(2, j);
+                // Cannot assume x_best/o_best for next test with columns
+                (prev == X) ? row_x_cur = x_best = 1 : row_o_cur = o_best = 1;
             } else {
-                if (prev == X) {
-                    row_x_cur++;
-
-                    if (row_x_cur > x_best)
-                        x_best = row_x_cur;
+                if (pieceAt(2, j) != prev) {
+                    // Reset current row count for prev piece
+                    (prev == X) ? row_x_cur = 0 : row_o_cur = 0;
+                    prev = pieceAt(2, j);
                 } else {
-                    row_o_cur++;
+                    if (prev == X) {
+                        row_x_cur++;
 
-                    if (row_o_cur > o_best)
-                        o_best = row_o_cur;
+                        if (row_x_cur > x_best)
+                            x_best = row_x_cur;
+                    } else {
+                        row_o_cur++;
+
+                        if (row_o_cur > o_best)
+                            o_best = row_o_cur;
+                    }
                 }
             }
+            (x_best == o_best) ? tied = true : tied = false;
         }
-        (x_best == o_best) ? tied = true : tied = false;
-    }
+    //}
+
+
 
     /* Row, col
     * [2,0][2,1][2,2][2,3]
