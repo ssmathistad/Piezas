@@ -217,6 +217,19 @@ TEST(PiezasTest, two_pieces_in_col_3_O_invalid)
 	ASSERT_EQ(piece_at, X);
 }
 
+// -- Tests with four pieces
+
+TEST(PiezasTest, four_pieces_in_col_3)
+{
+	Piezas obj;
+	obj.dropPiece(3);
+	obj.dropPiece(3);
+	obj.dropPiece(3);
+	obj.dropPiece(3);
+	Piece piece_at = obj.pieceAt(2, 3);
+	ASSERT_EQ(piece_at, X);
+}
+
 // Testing stacking
 /*    Row, col
     * [2,0][2,1][2,2][2,3]
