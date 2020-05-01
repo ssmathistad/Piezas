@@ -205,12 +205,8 @@ Piece Piezas::gameState()
                 prev = pieceAt(i, j);
                 if (prev == X) {
                     col_x_cur = 1;
-                    if (col_x_cur > x_best)
-                        x_best = col_x_cur;
                 } else {
                     col_o_cur = 1;
-                    if (col_o_cur > o_best)
-                        o_best = col_o_cur;
                 }
             } else {
                 // Previous piece streak broken
