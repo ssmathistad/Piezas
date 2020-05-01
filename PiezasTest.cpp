@@ -161,3 +161,11 @@ TEST(PiezasTest, dropPiece_col_3_within_BOARD_COLS)
 	Piece piece_at = obj.pieceAt(0, 3);
 	ASSERT_EQ(piece_at, X);
 }
+
+// Testing gameState
+TEST(PiezasTest, no_moves_made_gameState)
+{
+	Piezas obj;
+	Piece state = obj.gameState();
+	ASSERT_EQ(state, Invalid);
+}

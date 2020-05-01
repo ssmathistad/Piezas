@@ -145,65 +145,62 @@ Piece Piezas::gameState()
 
     int x_best = 0;
     int o_best = 0;
-    bool tied = false;
+
+    //for loop
+
     Piece prev;
+    int row_x_cur, row_o_cur = 0;
+    bool tied = false;
 
-    for (int i = BOARD_ROWS-1; i >= 0; i--) {
-        int cur_x, cur_o = 0;
+    for (int j = 0; j < BOARD_COLS; j++) {
+        if (j == 1) {
+            prev = pieceAt(2, j);
 
-        for (int j = 0; j < BOARD_COLS; j++) {
-            if (j == 0) {
-                prev = pieceAt(i, j);
-
-                if (prev == X) {
-                    cur_x = 1;
-
-                    if (cur_x > x_best) {
-                        x_best = cur_x;
-                    }
-                } else {
-                    cur_o = 1;
-
-                    if (cur_o > o_best) {
-                        o_best = cur_o;
-                    }
-                }
+/*
+            if (prev == X) {
+                row_x_cur, x_best = 1;
             } else {
-                    if (pieceAt(i, j) != prev) {
-                        prev = pieceAt(i, j);
-                    } else {
-                    if (prev == X) {
-                        cur_x++;
+                row_o_cur, o_best = 1;
+            }
+*/
 
-                        if (cur_x > x_best) {
-                            x_best = cur_x;
-                        }
-                    } else {
-                        cur_o++;
+            (prev == X) ? row_x_cur, x_best = 1 : row_o_cur, o_best = 1;
+        } else {
+            if (pieceAt(2, j) != prev) {
+/*
+                if (prev == X) {
+                    row_x_cur = 0;
+                } else {
+                    row_o_cur = 0;
+                }
+*/
 
-                        if (cur_o > o_best) {
-                            o_best = cur_o;
-                        }
-                    }
+                (prev == X) ? row_x_cur = 0 : row_o_cur = 0;
+                prev = pieceAt(2, j);
+            } else {
+                if (prev == X) {
+                    row_x_cur++;
+
+                    if (row_x_cur > x_best)
+                        x_best = row_x_cur;
+                } else {
+                    row_o_cur++;
+
+                    if (row_o_cur > o_best)
+                        o_best = row_o_cur;
                 }
             }
         }
 
+/*
         if (x_best == o_best) {
             tied = true;
         } else {
             tied = false;
         }
-    }
+*/
 
-    for (int i = 3; i >= 0; i--) {
-        for (int j = 0; j < 4; j++) {
-            if (j == 1) {
-                
-            } else {
-
-            }
-        }
+        (x_best == o_best) ? tied = true : tied = false;
     }
 
     /* Row, col
@@ -220,6 +217,7 @@ Piece Piezas::gameState()
     Col 2: [2,2][1,2][0,2]
     Col 3: [2,3][1,3][0,3]
     */
+
 
     return Blank;
 }
