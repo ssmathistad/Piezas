@@ -81,6 +81,7 @@ Piece Piezas::dropPiece(int column)
 
             return board[i][column];
         } else if (board[i][column] != Blank && i == BOARD_COLS-1) {
+            (turn == X) ? turn = O : turn = X;
             return Blank;
         }
     }
