@@ -153,11 +153,13 @@ Piece Piezas::gameState()
 
     // Examine rows
     for (int i = BOARD_ROWS-1; i >= 0; i--) {
-        int row_x_cur, row_o_cur = 0;
+        int row_x_cur = 0;
+        int row_o_cur = 0;
 
         for (int j = 0; j < BOARD_COLS; j++) {
             if (j == 0) {
                 prev = pieceAt(i, j);
+                
                 if (prev == X) {
                     row_x_cur = 1;
                     if (row_x_cur > x_best)
@@ -169,7 +171,7 @@ Piece Piezas::gameState()
                 }
             } else {
                 // Previous piece streak continues
-                if (pieceAt(i, j) != prev) {
+                if (pieceAt(i, j) == prev) {
                     // Reset current row count for prev piece
                     (prev == X) ? row_x_cur = 0 : row_o_cur = 0;
                     prev = pieceAt(i, j);
