@@ -298,3 +298,29 @@ TEST(PiezasTest, board_full_playing_sequentially_by_col_reversed)
 
 	ASSERT_EQ(obj.gameState(), Blank);
 }
+
+/*
+X O X O
+X X O O
+X O O X
+*/
+TEST(PiezasTest, board_full_X_win_by_col)
+{
+	Piezas obj;
+	obj.dropPiece(0);
+	obj.dropPiece(1);
+	obj.dropPiece(3);
+	obj.dropPiece(2);
+	
+	obj.dropPiece(0);
+	obj.dropPiece(2);
+	obj.dropPiece(1);
+	obj.dropPiece(3);
+
+	obj.dropPiece(0);
+	obj.dropPiece(1);
+	obj.dropPiece(2);
+	obj.dropPiece(3);
+
+	ASSERT_EQ(obj.gameState(), X);
+}
