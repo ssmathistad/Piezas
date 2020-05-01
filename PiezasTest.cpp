@@ -324,3 +324,29 @@ TEST(PiezasTest, board_full_X_win_by_col)
 
 	ASSERT_EQ(obj.gameState(), X);
 }
+
+/*
+O X O X
+O O X X
+O X X O
+*/
+TEST(PiezasTest, board_full_O_win_by_col)
+{
+	Piezas obj;
+	obj.dropPiece(1);
+	obj.dropPiece(0);
+	obj.dropPiece(2);
+	obj.dropPiece(3);
+	
+	obj.dropPiece(2);
+	obj.dropPiece(0);
+	obj.dropPiece(3);
+	obj.dropPiece(1);
+
+	obj.dropPiece(1);
+	obj.dropPiece(0);
+	obj.dropPiece(3);
+	obj.dropPiece(2);
+
+	ASSERT_EQ(obj.gameState(), O);
+}
