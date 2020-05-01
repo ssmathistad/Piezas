@@ -195,6 +195,33 @@ TEST(PiezasTest, two_pieces_in_col_0_O_invalid)
 	ASSERT_EQ(piece_at, X);
 }
 
+TEST(PiezasTest, two_pieces_in_col_3)
+{
+	Piezas obj;
+	obj.dropPiece(3);
+	obj.dropPiece(3);
+	Piece piece_at = obj.pieceAt(1, 3);
+	ASSERT_EQ(piece_at, O);
+}
+
+TEST(PiezasTest, two_pieces_in_col_3_X_invalid)
+{
+	Piezas obj;
+	obj.dropPiece(-1);
+	obj.dropPiece(3);
+	Piece piece_at = obj.pieceAt(0, 3);
+	ASSERT_EQ(piece_at, O);
+}
+
+TEST(PiezasTest, two_pieces_in_col_3_O_invalid)
+{
+	Piezas obj;
+	obj.dropPiece(3);
+	obj.dropPiece(-1);
+	Piece piece_at = obj.pieceAt(0, 3);
+	ASSERT_EQ(piece_at, X);
+}
+
 // Testing gameState
 TEST(PiezasTest, no_moves_made_gameState)
 {
