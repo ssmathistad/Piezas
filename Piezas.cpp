@@ -68,21 +68,22 @@ Piece Piezas::dropPiece(int column)
         (turn == X) ? turn = O : turn = X;
         return Invalid;
     }
-
-    if (board[BOARD_ROWS-1][column] != Blank) {
-        (turn == X) ? turn = O : turn = X;
+    
+    if (board[0][column] != Blank) {
+        //cout << "Not blank" << endl;
         return Blank;
     } else {
+        //cout << "Blank " << board[BOARD_ROWS-1][column] << endl;
+        
         for (int i = BOARD_ROWS-1; i >= 0; i--) {
             if (board[i][column] == Blank) {
-                if (turn == X) {
+                 if (turn == X) {
                     board[i][column] = X;
                     turn = O;
                 } else {
                     board[i][column] = O;
                     turn = X;
                 }
-                return board[i][column];
             }
         }
     }
