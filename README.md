@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.org/ssmathistad/Piezas.svg?branch=master)](https://travis-ci.org/ssmathistad/Piezas)
 
-.. image:: https://coveralls.io/repos/github/ssmathistad/Piezas/badge.svg?branch=master
-:target: https://coveralls.io/github/ssmathistad/Piezas?branch=master
+[![Coverage Status](https://coveralls.io/repos/github/ssmathistad/Piezas/badge.svg?branch=master)](https://coveralls.io/github/ssmathistad/Piezas?branch=master)
 
 # Piezas
 
