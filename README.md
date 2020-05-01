@@ -2,6 +2,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/ssmathistad/Piezas/badge.svg?branch=master)](https://coveralls.io/github/ssmathistad/Piezas?branch=master)
 
+
 # Piezas
 
 ## Associated Enumerated Types
