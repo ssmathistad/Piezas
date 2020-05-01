@@ -339,7 +339,7 @@ TEST(PiezasTest, board_full_test_reset)
 
 	obj.reset();
 
-	ASSERT_EQ(obj.gameState(), Blank);
+	ASSERT_EQ(obj.gameState(), Invalid);
 }
 
 /*
