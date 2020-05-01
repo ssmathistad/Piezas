@@ -246,6 +246,28 @@ TEST(PiezasTest, two_pieces_in_col_3_O_invalid)
 }
 
 // -- Tests with four pieces
+TEST(PiezasTest, four_pieces_in_col_0)
+{
+	Piezas obj;
+	obj.dropPiece(0);
+	obj.dropPiece(0);
+	obj.dropPiece(0);
+	obj.dropPiece(0);
+	Piece piece_at = obj.pieceAt(2, 0);
+	ASSERT_EQ(piece_at, X);
+}
+
+TEST(PiezasTest, four_pieces_in_col_0_with_invalid_move)
+{
+	Piezas obj;
+	obj.dropPiece(0);
+	obj.dropPiece(0);
+	obj.dropPiece(-1);
+	obj.dropPiece(0);
+	obj.dropPiece(0);
+	Piece piece_at = obj.pieceAt(2, 0);
+	ASSERT_EQ(piece_at, O);
+}
 
 TEST(PiezasTest, four_pieces_in_col_3)
 {
