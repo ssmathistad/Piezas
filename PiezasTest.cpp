@@ -114,7 +114,6 @@ TEST(PiezasTest, reset_get_piece_at_row_2_col_3_no_dropPiece)
 //// Invalid col
 TEST(PiezasTest, dropPiece_below_min_BOARD_COLS)
 {
-	// 0-2 then 1-2 is col 2
 	Piezas obj;
 	obj.dropPiece(-1);
 	Piece piece_at = obj.pieceAt(0, -1);
@@ -162,12 +161,8 @@ TEST(PiezasTest, dropPiece_col_3_within_BOARD_COLS)
 	ASSERT_EQ(piece_at, X);
 }
 
-// Testing stacking
-/*    Row, col
-    * [2,0][2,1][2,2][2,3]
-    * [1,0][1,1][1,2][1,3]
-    * [0,0][0,1][0,2][0,3]
-*/
+// -- Tests with two pieces
+
 TEST(PiezasTest, two_pieces_in_col_0)
 {
 	Piezas obj;
@@ -221,6 +216,15 @@ TEST(PiezasTest, two_pieces_in_col_3_O_invalid)
 	Piece piece_at = obj.pieceAt(0, 3);
 	ASSERT_EQ(piece_at, X);
 }
+
+// Testing stacking
+/*    Row, col
+    * [2,0][2,1][2,2][2,3]
+    * [1,0][1,1][1,2][1,3]
+    * [0,0][0,1][0,2][0,3]
+*/
+
+
 
 // Testing gameState
 TEST(PiezasTest, no_moves_made_gameState)

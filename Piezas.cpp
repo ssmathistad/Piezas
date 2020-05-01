@@ -159,8 +159,15 @@ Piece Piezas::gameState()
         for (int j = 0; j < BOARD_COLS; j++) {
             if (j == 1) {
                 prev = pieceAt(2, j);
-                // Cannot assume x_best/o_best for next test with columns
-                (prev == X) ? row_x_cur = x_best = 1 : row_o_cur = o_best = 1;
+                if (prev == X) {
+                    row_x_cur = 1;
+                    if (row_x_cur > x_best)
+                        x_best = row_x_cur;
+                } else {
+                    row_o_cur = 1;
+                    if (row_o_cur > o_best)
+                        o_best = row_o_cur;
+                }
             } else {
                 // Previous piece streak continues
                 if (pieceAt(2, j) != prev) {
