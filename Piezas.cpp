@@ -55,12 +55,6 @@ void Piezas::reset()
  * Out of bounds coordinates return the Piece Invalid value
  * Trying to drop a piece where it cannot be placed loses the player's turn
 **/
-
-/*    Row, col
-    * [2,0][2,1][2,2][2,3]
-    * [1,0][1,1][1,2][1,3]
-    * [0,0][0,1][0,2][0,3]
-*/
 Piece Piezas::dropPiece(int column)
 {
     if (column >= BOARD_COLS || column < 0) {
@@ -88,11 +82,6 @@ Piece Piezas::dropPiece(int column)
  * Returns what piece is at the provided coordinates, or Blank if there
  * are no pieces there, or Invalid if the coordinates are out of bounds
 **/
-/*    Row, col
-    * [2,0][2,1][2,2][2,3]
-    * [1,0][1,1][1,2][1,3]
-    * [0,0][0,1][0,2][0,3]
-*/
 Piece Piezas::pieceAt(int row, int column)
 {
     if (row >= BOARD_ROWS || column >= BOARD_COLS || row < 0 || column < 0) {

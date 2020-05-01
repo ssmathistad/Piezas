@@ -23,24 +23,38 @@ TEST(PiezasTest, initial_state_row_0_col_0)
 	ASSERT_EQ(piece_at, Blank);
 }
 
-TEST(PiezasTest, initial_state_row_neg_1_col_0)
+TEST(PiezasTest, initial_state_invalid_row_below__min_col_0)
 {
 	Piezas obj;
 	Piece piece_at = obj.pieceAt(-1, 0);
 	ASSERT_EQ(piece_at, Invalid);
 }
 
-TEST(PiezasTest, initial_state_row_0_col_3)
+TEST(PiezasTest, initial_state_invalid_row_col_3)
 {
 	Piezas obj;
 	Piece piece_at = obj.pieceAt(0, 3);
 	ASSERT_EQ(piece_at, Blank);
 }
 
-TEST(PiezasTest, initial_state_row_4_col_3)
+TEST(PiezasTest, initial_state_invalid_row_above__max_col_3)
 {
 	Piezas obj;
 	Piece piece_at = obj.pieceAt(4, 3);
+	ASSERT_EQ(piece_at, Invalid);
+}
+
+TEST(PiezasTest, initial_state_invalid_row_and_col)
+{
+	Piezas obj;
+	Piece piece_at = obj.pieceAt(5, 10);
+	ASSERT_EQ(piece_at, Invalid);
+}
+
+TEST(PiezasTest, initial_state_invalid_row_and_col_negative)
+{
+	Piezas obj;
+	Piece piece_at = obj.pieceAt(-5, -10);
 	ASSERT_EQ(piece_at, Invalid);
 }
 
