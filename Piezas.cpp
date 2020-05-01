@@ -63,30 +63,25 @@ void Piezas::reset()
 */
 Piece Piezas::dropPiece(int column)
 {
-    // 0-2 then 1-2 is col 2
     if (column >= BOARD_COLS || column < 0) {
         (turn == X) ? turn = O : turn = X;
         return Invalid;
     }
     
-    if (board[0][column] != Blank) {
-        //cout << "Not blank" << endl;
-        return Blank;
-    } else {
-        //cout << "Blank " << board[BOARD_ROWS-1][column] << endl;
-        
-        for (int i = BOARD_ROWS-1; i >= 0; i--) {
-            if (board[i][column] == Blank) {
-                 if (turn == X) {
-                    board[i][column] = X;
-                    turn = O;
-                } else {
-                    board[i][column] = O;
-                    turn = X;
-                }
+    for (int i = BOARD_ROWS-1; i >= 0; i--) {
+        if (board[i][column] == Blank) {
+             if (turn == X) {
+                board[i][column] = X;
+                turn = O;
+            } else {
+                board[i][column] = O;
+                turn = X;
             }
+            return board[i][column];
         }
     }
+    
+    return Blank;
 }
 
 /*
