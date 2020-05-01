@@ -84,41 +84,10 @@ Piece Piezas::dropPiece(int column)
     return Blank;
 }
 
-/*
-Piece Piezas::dropPiece(int column)
-{
-    // 0-2 then 1-2 is col 2
-    if (column >= BOARD_COLS || column < 0) {
-        (turn == X) ? turn = O : turn = X;
-        return Invalid;
-    }
-
-    for (int i = BOARD_ROWS-1; i >= 0; i--) {
-        if (board[i][column] == Blank && i <= BOARD_COLS-1) {
-            if (turn == X) {
-                board[i][column] = X;
-                turn = O;
-            } else {
-                board[i][column] = O;
-                turn = X;
-            }
-
-            return board[i][column];
-        } else if (board[i][column] != Blank && i == BOARD_COLS-1) {
-            (turn == X) ? turn = O : turn = X;
-            return Blank;
-        }
-    }
-
-    return Invalid;
-}
-*/
-
 /**
  * Returns what piece is at the provided coordinates, or Blank if there
  * are no pieces there, or Invalid if the coordinates are out of bounds
 **/
-
 /*    Row, col
     * [2,0][2,1][2,2][2,3]
     * [1,0][1,1][1,2][1,3]
@@ -126,7 +95,6 @@ Piece Piezas::dropPiece(int column)
 */
 Piece Piezas::pieceAt(int row, int column)
 {
-    // 0,2
     row = std::abs(row-2);
 
     if (row >= BOARD_ROWS || column >= BOARD_COLS) {
@@ -224,6 +192,57 @@ Piece Piezas::gameState()
                     }
                 }
             }
+        }
+    }
+
+    // Examine columns
+    for (int j = 0; j < BOARD_COLS; j++) {
+        int col_x_cur = 0;
+        int col_o_cur = 0;
+
+        for (int i = 0; i < BOARD_ROWS; i++) {
+            if (i == 0) {
+                prev = pieceAt(i, j);
+                if (prev == X) {
+                    col_x_cur = 1;
+                    if (col_x_cur > x_best)
+                        x_best = col_x_cur;
+                } else {
+                    col_o_cur = 1;
+                    if (col_o_cur > o_best)
+                        o_best = col_o_cur;
+                }
+            } else {
+                // Previous piece streak broken
+                if (pieceAt(i, j) != prev) {
+                    (prev == X) ? col_x_cur = 0 : col_o_cur = 0;
+                    
+                    prev = pieceAt(i, j);
+                    
+                    if (prev == X) {
+                        col_x_cur++;
+                        if (col_x_cur > x_best)
+                            x_best = col_x_cur;
+                    } else {
+                        col_o_cur++;
+                        if (col_o_cur > o_best)
+                            o_best = col_o_cur;
+                    }
+                // Previous piece streak continue
+                } else {
+                    if (prev == X) {
+                        col_x_cur++;
+
+                        if (col_x_cur > x_best)
+                            x_best = col_x_cur;
+                    } else {
+                        col_o_cur++;
+
+                        if (col_o_cur > o_best)
+                            o_best = col_o_cur;
+                    }
+                }
+            }           
         }
     }
 
