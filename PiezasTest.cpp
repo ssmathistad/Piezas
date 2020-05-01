@@ -195,6 +195,24 @@ TEST(PiezasTest, two_pieces_in_col_0_O_invalid_move)
 	ASSERT_EQ(piece_at, X);
 }
 
+TEST(PiezasTest, two_pieces_in_col_3_X_invalid_move)
+{
+	Piezas obj;
+	obj.dropPiece(-1);
+	obj.dropPiece(0);
+	Piece piece_at = obj.pieceAt(0, 3);
+	ASSERT_EQ(piece_at, O);
+}
+
+TEST(PiezasTest, two_pieces_in_col_3_O_invalid_move)
+{
+	Piezas obj;
+	obj.dropPiece(0);
+	obj.dropPiece(-1);
+	Piece piece_at = obj.pieceAt(0, 3);
+	ASSERT_EQ(piece_at, X);
+}
+
 // Testing gameState
 TEST(PiezasTest, no_moves_made_gameState)
 {
