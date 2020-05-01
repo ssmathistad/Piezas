@@ -23,11 +23,25 @@ TEST(PiezasTest, initial_state_row_0_col_0)
 	ASSERT_EQ(piece_at, Blank);
 }
 
+TEST(PiezasTest, initial_state_row_neg_1_col_0)
+{
+	Piezas obj;
+	Piece piece_at = obj.pieceAt(-1, 0);
+	ASSERT_EQ(piece_at, Invalid);
+}
+
 TEST(PiezasTest, initial_state_row_0_col_3)
 {
 	Piezas obj;
 	Piece piece_at = obj.pieceAt(0, 3);
 	ASSERT_EQ(piece_at, Blank);
+}
+
+TEST(PiezasTest, initial_state_row_4_col_3)
+{
+	Piezas obj;
+	Piece piece_at = obj.pieceAt(4, 3);
+	ASSERT_EQ(piece_at, Invalid);
 }
 
 TEST(PiezasTest, initial_state_row_1_col_0)
@@ -229,15 +243,6 @@ TEST(PiezasTest, four_pieces_in_col_3)
 	Piece piece_at = obj.pieceAt(2, 3);
 	ASSERT_EQ(piece_at, X);
 }
-
-// Testing stacking
-/*    Row, col
-    * [2,0][2,1][2,2][2,3]
-    * [1,0][1,1][1,2][1,3]
-    * [0,0][0,1][0,2][0,3]
-*/
-
-
 
 // Testing gameState
 TEST(PiezasTest, no_moves_made_gameState)
