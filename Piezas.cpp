@@ -95,11 +95,11 @@ Piece Piezas::dropPiece(int column)
 */
 Piece Piezas::pieceAt(int row, int column)
 {
-    row = std::abs(row-2);
-
-    if (row >= BOARD_ROWS || column >= BOARD_COLS) {
+    if (row >= BOARD_ROWS || column >= BOARD_COLS || row < 0 || column < 0) {
         return Invalid;
     }
+
+    row = std::abs(row-2);
     
     if (board[row][column] == Blank) {
         return Blank;
