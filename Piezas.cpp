@@ -69,24 +69,23 @@ Piece Piezas::dropPiece(int column)
         return Invalid;
     }
 
-    for (int i = BOARD_ROWS-1; i >= 0; i--) {
-        if (board[i][column] == Blank && i <= BOARD_ROWS-1) {
-            if (turn == X) {
-                board[i][column] = X;
-                turn = O;
-            } else {
-                board[i][column] = O;
-                turn = X;
+    if (board[BOARD_ROWS-1][column] != Blank) {
+        (turn == X) ? turn = O : turn = X;
+        return Blank;
+    } else {
+        for (int i = BOARD_ROWS-1; i >= 0; i--) {
+            if (board[i][column] == Blank) {
+                if (turn == X) {
+                    board[i][column] = X;
+                    turn = O;
+                } else {
+                    board[i][column] = O;
+                    turn = X;
+                }
             }
-
             return board[i][column];
-        } else if (board[i][column] != Blank && i == BOARD_ROWS-1) {
-            (turn == X) ? turn = O : turn = X;
-            return Blank;
         }
     }
-
-    return Invalid;
 }
 
 /**
