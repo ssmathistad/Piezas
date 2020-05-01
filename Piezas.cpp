@@ -128,7 +128,6 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
-    //bool gameOver = false;
     int counter = 0;
 
     for (int i = BOARD_ROWS-1; i >= 0; i--) {
@@ -143,38 +142,25 @@ Piece Piezas::gameState()
         return Invalid;
     }
 
-    int x_best = 0;
-    int o_best = 0;
-
-    //for loop
+    // Test rows
 
     Piece prev;
-    int row_x_cur, row_o_cur = 0;
+    int x_best = 0;
+    int o_best = 0;
     bool tied = false;
+
+    //for loop start - rows
+    
+    int row_x_cur, row_o_cur = 0;
 
     for (int j = 0; j < BOARD_COLS; j++) {
         if (j == 1) {
             prev = pieceAt(2, j);
-
-/*
-            if (prev == X) {
-                row_x_cur, x_best = 1;
-            } else {
-                row_o_cur, o_best = 1;
-            }
-*/
-
+            // Cannot assume x_best/o_best for next test with columns
             (prev == X) ? row_x_cur, x_best = 1 : row_o_cur, o_best = 1;
         } else {
             if (pieceAt(2, j) != prev) {
-/*
-                if (prev == X) {
-                    row_x_cur = 0;
-                } else {
-                    row_o_cur = 0;
-                }
-*/
-
+                // Reset current row count for prev piece
                 (prev == X) ? row_x_cur = 0 : row_o_cur = 0;
                 prev = pieceAt(2, j);
             } else {
@@ -191,15 +177,6 @@ Piece Piezas::gameState()
                 }
             }
         }
-
-/*
-        if (x_best == o_best) {
-            tied = true;
-        } else {
-            tied = false;
-        }
-*/
-
         (x_best == o_best) ? tied = true : tied = false;
     }
 
@@ -217,7 +194,6 @@ Piece Piezas::gameState()
     Col 2: [2,2][1,2][0,2]
     Col 3: [2,3][1,3][0,3]
     */
-
 
     return Blank;
 }
