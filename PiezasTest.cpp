@@ -174,7 +174,7 @@ TEST(PiezasTest, two_pieces_in_col_0)
 	obj.dropPiece(0);
 	obj.dropPiece(0);
 	Piece piece_at = obj.pieceAt(1, 0);
-	ASSERT_EQ(state, O);
+	ASSERT_EQ(piece_at, O);
 }
 
 // Testing gameState
