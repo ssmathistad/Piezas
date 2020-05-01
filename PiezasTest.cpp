@@ -259,3 +259,29 @@ TEST(PiezasTest, board_full_playing_sequentially_by_col)
 
 	ASSERT_EQ(obj.gameState(), Blank);
 }
+
+/*
+O X O X
+O X O X
+O X O X
+*/
+TEST(PiezasTest, board_full_playing_sequentially_by_col_reversed)
+{
+	Piezas obj;
+	obj.dropPiece(3);
+	obj.dropPiece(2);
+	obj.dropPiece(1);
+	obj.dropPiece(0);
+	
+	obj.dropPiece(3);
+	obj.dropPiece(2);
+	obj.dropPiece(1);
+	obj.dropPiece(0);
+
+	obj.dropPiece(3);
+	obj.dropPiece(2);
+	obj.dropPiece(1);
+	obj.dropPiece(0);
+
+	ASSERT_EQ(obj.gameState(), Blank);
+}
