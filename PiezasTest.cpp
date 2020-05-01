@@ -241,7 +241,6 @@ X O X O
 X O X O
 X O X O
 */
-/*
 TEST(PiezasTest, board_full_playing_sequentially_by_col)
 {
 	Piezas obj;
@@ -262,4 +261,3 @@ TEST(PiezasTest, board_full_playing_sequentially_by_col)
 
 	ASSERT_EQ(obj.gameState(), Blank);
 }
-*/
