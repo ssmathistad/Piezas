@@ -157,7 +157,7 @@ Piece Piezas::gameState()
         if (j == 1) {
             prev = pieceAt(2, j);
             // Cannot assume x_best/o_best for next test with columns
-            (prev == X) ? row_x_cur, x_best = 1 : row_o_cur, o_best = 1;
+            (prev == X) ? (row_x_cur, x_best = 1) : (row_o_cur, o_best = 1);
         } else {
             if (pieceAt(2, j) != prev) {
                 // Reset current row count for prev piece
