@@ -162,6 +162,21 @@ TEST(PiezasTest, dropPiece_col_3_within_BOARD_COLS)
 	ASSERT_EQ(piece_at, X);
 }
 
+// Testing stacking
+/*    Row, col
+    * [2,0][2,1][2,2][2,3]
+    * [1,0][1,1][1,2][1,3]
+    * [0,0][0,1][0,2][0,3]
+*/
+TEST(PiezasTest, two_pieces_in_col_0)
+{
+	Piezas obj;
+	obj.dropPiece(0);
+	obj.dropPiece(0);
+	Piece piece_at = obj.pieceAt(1, 0);
+	ASSERT_EQ(state, O);
+}
+
 // Testing gameState
 TEST(PiezasTest, no_moves_made_gameState)
 {
@@ -170,11 +185,14 @@ TEST(PiezasTest, no_moves_made_gameState)
 	ASSERT_EQ(state, Invalid);
 }
 
+
+
 /*
 X O X O
 X O X O
 X O X O
 */
+/*
 TEST(PiezasTest, board_full_playing_sequentially_by_col)
 {
 	Piezas obj;
@@ -195,3 +213,4 @@ TEST(PiezasTest, board_full_playing_sequentially_by_col)
 
 	ASSERT_EQ(obj.gameState(), Blank);
 }
+*/
