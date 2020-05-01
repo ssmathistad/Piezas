@@ -142,12 +142,13 @@ Piece Piezas::gameState()
         return Invalid;
     }
 
-    //Determine winner
+    //--Determine winner
 
     Piece prev;
     int x_best = 0;
     int o_best = 0;
     bool tied = false;
+    Piece current_winner = Blank;
 
     // Examine rows
     for (int i = BOARD_ROWS-1; i >= 0; i--) {
@@ -159,10 +160,12 @@ Piece Piezas::gameState()
                 // Cannot assume x_best/o_best for next test with columns
                 (prev == X) ? row_x_cur = x_best = 1 : row_o_cur = o_best = 1;
             } else {
+                // Previous piece streak continues
                 if (pieceAt(2, j) != prev) {
                     // Reset current row count for prev piece
                     (prev == X) ? row_x_cur = 0 : row_o_cur = 0;
                     prev = pieceAt(2, j);
+                // Previous piece streak broken
                 } else {
                     if (prev == X) {
                         row_x_cur++;
@@ -177,7 +180,16 @@ Piece Piezas::gameState()
                     }
                 }
             }
-            (x_best == o_best) ? tied = true : tied = false;
+
+            // No current winner
+            if (x_best == o_best) {
+                tied == true;
+                current_winner = Blank;
+            // Set current winner
+            } else {
+                tied = false;
+                (x_best > o_best) ? current_winner = X : current_winner = O;
+            }
         }
     }
 
