@@ -149,8 +149,8 @@ Piece Piezas::gameState()
     int o_best = 0;
     bool tied = false;
 
-    // Test rows
-    // for (int i = BOARD_ROWS-1; i >= 0; i--) {
+    // Examine rows
+    for (int i = BOARD_ROWS-1; i >= 0; i--) {
         int row_x_cur, row_o_cur = 0;
 
         for (int j = 0; j < BOARD_COLS; j++) {
@@ -179,7 +179,7 @@ Piece Piezas::gameState()
             }
             (x_best == o_best) ? tied = true : tied = false;
         }
-    //}
+    }
 
 
 
